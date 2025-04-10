@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="logo.jpg" alt="logo">
+            </div>
+            <button class="menu-toggle" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="search-container">
+                <input type="text" placeholder="Search...">
+                <button class="search-button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active" data-section="home">HOME</a></li>
+                <li><a href="#music" class="nav-link" data-section="music">SOFTWARE</a></li>
+                <li><a href="#beats" class="nav-link" data-section="beats">BEATS AND SAMPLE</a></li>
+                <li><a href="#team" class="nav-link" data-section="team">TEAM</a></li>
+                <li><a href="#about" class="nav-link" data-section="about">ABOUT</a></li>
+                <li><a href="#contact" class="nav-link" data-section="contact">CONTACT</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <button class="auth-btn login-btn" onclick="openAuthModal('login')">Login</button>
+                <button class="auth-btn register-btn" onclick="openAuthModal('register')">Register</button>
+                <div class="user-menu hidden">
+                    <span class="user-name"></span>
+                    <button class="logout-btn">Logout</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Auth Modal -->
+    <div class="auth-modal" id="authModal">
+        <div class="auth-modal-content">
+            <button class="close-modal" onclick="closeAuthModal()">&times;</button>
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login">Login</button>
+                <button class="auth-tab" data-tab="register">Register</button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" class="auth-form active">
+                <div class="social-auth">
+                    <button type="button" class="social-btn google">
+                        <i class="fab fa-google"></i>
+                        Continue with Google
+                    </button>
+                    <button type="button" class="social-btn facebook">
+                        <i class="fab fa-facebook-f"></i>
+                        Continue with Facebook
+                    </button>
+                </div>
+
+                <div class="divider">
+                    <span>or login with email</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required>
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                </div>
+                <div class="form-group">
+                    <label class="remember-me">
+                        <input type="checkbox" id="rememberMe">
+                        <span>Remember me</span>
+                    </label>
+                </div>
+                <button type="submit" class="auth-submit">Login</button>
+            </form>
+
+            <!-- Register Form -->
+            <form id="registerForm" class="auth-form">
+                <div class="form-group">
+                    <label for="registerName">Full Name</label>
+                    <input type="text" id="registerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Password</label>
+                    <input type="password" id="registerPassword" required>
+                    <div class="password-strength"></div>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" required>
+                </div>
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="termsAgree" required>
+                        <span>I agree to the <a href="#" class="terms-link">Terms & Conditions</a></span>
+                    </label>
+                </div>
+                <button type="submit" class="auth-submit">Create Account</button>
+            </form>
+        </div>
+    </div>
+
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <div class="hero-text-container">
+                <h1 class="main-title">Create Your Sound</h1>
+                <h2 class="hero-subtitle">Let the World Vibe with Your Music</h2>
+                <p class="hero-description">Professional Music Production Tools & Premium Beats</p>
+                <div class="hero-cta">
+                    <a href="#beats" class="cta-button primary">Explore Beats</a>
+                    <a href="#music" class="cta-button secondary">Production Tools</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="dolo.jpg" alt="Music Production Studio" class="hero-img">
+            </div>
+        </div>
+    </section>
+
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Create Your Best Music</h1>
+                <p>Professional beats production using industry-standard tools</p>
+                <div class="hero-features">
+                    <div class="feature">
+                        <i class="fas fa-laptop-code"></i>
+                        <h3>Professional DAWs</h3>
+                    
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-plug"></i>
+                        <h3>Premium VSTs</h3>
+                        <p>Omnisphere, Nexus 3, Serum, FabFilter</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-microphone-alt"></i>
+                        <h3>Pro Equipment</h3>
+                        <p>SSL Interface, Neumann Mics, Yamaha HS8</p>
+                    </div>
+                </div>
+                <div class="hero-cta">
+                    <a href="#beats" class="cta-button">Explore Beats</a>
+                    <div class="social-links">
+                        <a href="https://youtube.com/@your-channel" target="_blank" class="social-icon youtube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://instagram.com/your-profile" target="_blank" class="social-icon instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://soundcloud.com/your-profile" target="_blank" class="social-icon soundcloud">
+                            <i class="fab fa-soundcloud"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-images">
+                <div class="daw-showcase">
+                    <img src="fl-studio.png" alt="FL Studio" class="daw-image">
+                    <img src="ableton.png" alt="Ableton Live" class="daw-image">
+                    <img src="ProTools-Icon.png" alt="ProTools-Icon" class="daw-image">
+                </div>
+                <div class="vst-showcase">
+                    <img src="sphere.jpg" alt="sphere" class="vst-image">
+                    <img src="nexus.png" alt="Nexus" class="vst-image">
+                    <img src="seru.jpg" alt="Serum" class="vst-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="music" class="content">
+        <h2 class="section-title">Music Production Software</h2>
+        <div class="software-section">
+            <h3>Popular DAWs</h3>
+            <div class="software-grid">
+                <div class="software-item">
+                    <div class="image-container">
+                        <div class="image-inner">
+                            <img src="fl studio.jpg" alt="fl studio">
+                            <div class="image-overlay">
+                                <i class="fas fa-play-circle"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>FL Studio</h4>
+                    <p>Complete music production software</p>
+                    <a href="https://www.image-line.com/" target="_blank" class="learn-more">Learn More</a>
+                </div>
+                <div class="software-item">
+                    <div class="image-container">
+                        <div class="image-inner">
+                            <img src="ableton live.jpg" alt="ableton live">
+                            <div class="image-overlay">
+                                <i class="fas fa-play-circle"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>Ableton Live</h4>
+                    <p>Professional music creation and performance</p>
+                    <a href="https://www.ableton.com/" target="_blank" class="learn-more">Learn More</a>
+                </div>
+            </div>
+
+            <h3>Essential VST Plugins</h3>
+            <div class="software-grid">
+                <div class="software-item">
+                    <div class="image-container">
+                        <div class="image-inner">
+                            <img src="serum.webp" alt="Serum">
+                            <div class="image-overlay">
+                                <i class="fas fa-sliders-h"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>Serum</h4>
+                    <p>Advanced wavetable synthesizer</p>
+                    <a href="https://xferrecords.com/products/serum" target="_blank" class="learn-more">Learn More</a>
+                </div>
+                <div class="software-item">
+                    <div class="image-container">
+                        <div class="image-inner">
+                            <img src="omnisphere.jpg" alt="Omnisphere">
+                            <div class="image-overlay">
+                                <i class="fas fa-wave-square"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>Omnisphere</h4>
+                    <p>Power synthesizer with vast sound library</p>
+                    <a href="https://www.spectrasonics.net/products/omnisphere/" target="_blank" class="learn-more">Learn More</a>
+                </div>
+                <div class="software-item">
+                    <div class="image-container">
+                        <div class="image-inner">
+                            <img src="kontakt.jpg" alt="Kontakt">
+                            <div class="image-overlay">
+                                <i class="fas fa-drum"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>Kontakt</h4>
+                    <p>Industry-standard sampler</p>
+                    <a href="https://www.native-instruments.com/en/products/komplete/samplers/kontakt-7/" target="_blank" class="learn-more">Learn More</a>
+                </div>
+                <div class="software-item">
+                    <div class="image-container">
+                        <div class="image-inner">
+                            <img src="massive.jpg" alt="Massive">
+                            <div class="image-overlay">
+                                <i class="fas fa-wave-square"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>Massive</h4>
+                    <p>Iconic synthesizer for modern production</p>
+                    <a href="https://www.native-instruments.com/en/products/komplete/synths/massive-x/" target="_blank" class="learn-more">Learn More</a>
+                </div>
+            </div>
+
+            <h3>Effect Plugins</h3>
+            <div class="software-grid">
+                <div class="software-item">
+                    <div class="image-container">
+                        <div class="image-inner">
+                            <img src="fabfilter.jpg" alt="FabFilter Pro-Q 3">
+                            <div class="image-overlay">
+                                <i class="fas fa-sliders-h"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>FabFilter Pro-Q 3</h4>
+                    <p>Professional equalizer plugin</p>
+                    <a href="https://www.fabfilter.com/products/pro-q-3-equalizer-plug-in" target="_blank" class="learn-more">Learn More</a>
+                </div>
+                <div class="software-item">
+                    <div class="image-container">
+                        <div class="image-inner">
+                            <img src="soundtoys.jpg" alt="Soundtoys Bundle">
+                            <div class="image-overlay">
+                                <i class="fas fa-wave-square"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>Soundtoys Bundle</h4>
+                    <p>Creative effects collection</p>
+                    <a href="https://www.soundtoys.com/" target="_blank" class="learn-more">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="beats" class="content">
+        <h2 class="section-title">Beats & Samples</h2>
+        <div class="beats-section">
+            <div class="beats-categories">
+                <div class="category">
+                    <h3>Featured Beats</h3>
+                    <div class="beats-grid">
+                        <div class="beat-item">
+                            <div class="beat-container">
+                                <img src="trap-beat.jpg" alt="Trap Beat">
+                                <div class="beat-overlay">
+                                    <button class="play-button">
+                                        <i class="fas fa-play"></i>
+                                    </button>
+                                    <div class="beat-info">
+                                        <h4>Trap Vibes</h4>
+                                        <p>140 BPM | Em</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="beat-actions">
+                                <button class="download-btn">Download</button>
+                                <span class="price">$29.99</span>
+                            </div>
+                        </div>
+                        <div class="beat-item">
+                            <div class="beat-container">
+                                <img src="rnb-beat.jpg" alt="R&B Beat">
+                                <div class="beat-overlay">
+                                    <button class="play-button">
+                                        <i class="fas fa-play"></i>
+                                    </button>
+                                    <div class="beat-info">
+                                        <h4>Smooth R&B</h4>
+                                        <p>90 BPM | Dm</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="beat-actions">
+                                <button class="download-btn">Download</button>
+                                <span class="price">$24.99</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="category">
+                    <h3>Sample Packs</h3>
+                    <div class="sample-grid">
+                        <div class="sample-pack">
+                            <div class="pack-container">
+                                <img src="drums-pack.jpg" alt="Drum Samples">
+                                <div class="pack-overlay">
+                                    <div class="pack-info">
+                                        <h4>Ultimate Drums</h4>
+                                        <p>500+ Premium Drum Samples</p>
+                                        <ul>
+                                            <li>High-quality 808s</li>
+                                            <li>Crisp Hi-hats</li>
+                                            <li>Punchy Kicks</li>
+                                            <li>Unique Percussion</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pack-actions">
+                                <button class="download-btn">Get Pack</button>
+                                <span class="price">$49.99</span>
+                            </div>
+                        </div>
+                        <div class="sample-pack">
+                            <div class="pack-container">
+                                <img src="melody-pack.jpg" alt="Melody Samples">
+                                <div class="pack-overlay">
+                                    <div class="pack-info">
+                                        <h4>Melodic Essentials</h4>
+                                        <p>200+ Melodic Loops & Samples</p>
+                                        <ul>
+                                            <li>Guitar Loops</li>
+                                            <li>Piano Melodies</li>
+                                            <li>Synth Hooks</li>
+                                            <li>Vocal Chops</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pack-actions">
+                                <button class="download-btn">Get Pack</button>
+                                <span class="price">$39.99</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="upload-section">
+                <h3>Upload Your Beats</h3>
+                <div class="upload-requirements">
+                    <h4>Quality Requirements:</h4>
+                    <ul>
+                        <li><i class="fas fa-check"></i> MP3 Format Only</li>
+                        <li><i class="fas fa-check"></i> Minimum Bitrate: 320 kbps</li>
+                        <li><i class="fas fa-check"></i> Sample Rate: 41.1 kHz or higher</li>
+                        <li><i class="fas fa-check"></i> Maximum File Size: 10MB</li>
+                    </ul>
+                </div>
+                
+                <div class="upload-container">
+                    <div class="upload-area" id="uploadArea">
+                        <input type="file" id="audioFileInput" accept="audio/mp3" multiple hidden>
+                        <div class="upload-content">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <h4>Drag & Drop MP3 Files</h4>
+                            <p>or</p>
+                            <button class="upload-btn" id="selectFilesBtn">Select Files</button>
+                            <p class="upload-info">Maximum 5 files at once</p>
+                        </div>
+                    </div>
+
+                    <div class="uploaded-files" id="uploadedFiles">
+                        <h4>Uploaded Files</h4>
+                        <div class="file-list" id="fileList">
+                            <!-- Files will be listed here dynamically -->
+                        </div>
+                    </div>
+                    <button id="submitUpload" class="submit-upload-btn">
+                        <i class="fas fa-paper-plane"></i>
+                        Submit Upload
+                    </button>
+                </div>
+            </div>
+
+            <div class="beats-cta">
+                <h3>Want Custom Beats?</h3>
+                <p>Contact us for custom beat production tailored to your style</p>
+                <a href="#contact" class="cta-button">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="content">
+        <h2 class="section-title">About Us</h2>
+        <div class="about-container">
+            <div class="about-text">
+                <h3>Our Mission</h3>
+                <p>We are dedicated to helping aspiring musicians and producers master the art of music production. Our community brings together passionate individuals who share knowledge and creativity.</p>
+                
+                <h3>What We Offer</h3>
+                <div class="services-grid">
+                    <div class="service-item">
+                        <h4>Music Production Courses</h4>
+                        <p>Learn from industry professionals and develop your skills</p>
+                        <div class="courses-container">
+                            <div class="course-card">
+                                <div class="course-header">
+                                    <h5>Beginner Music Production</h5>
+                                    <span class="course-price">$50</span>
+                                </div>
+                                <ul class="course-features">
+                                    <li><i class="fas fa-check"></i> DAW Basics & Setup</li>
+                                    <li><i class="fas fa-check"></i> Music Theory Fundamentals</li>
+                                    <li><i class="fas fa-check"></i> Basic Mixing & Effects</li>
+                                    <li><i class="fas fa-check"></i> 8 Weeks Course Duration</li>
+                                    <li><i class="fas fa-check"></i> Weekly Live Sessions</li>
+                                </ul>
+                                <button class="enroll-btn">Enroll Now</button>
+                            </div>
+
+                            <div class="course-card">
+                                <div class="course-header">
+                                    <h5>Advanced Beat Making</h5>
+                                    <span class="course-price">$300</span>
+                                </div>
+                                <ul class="course-features">
+                                    <li><i class="fas fa-check"></i> Advanced Sound Design</li>
+                                    <li><i class="fas fa-check"></i> Complex Rhythm Patterns</li>
+                                    <li><i class="fas fa-check"></i> Professional Mixing</li>
+                                    <li><i class="fas fa-check"></i> 12 Weeks Course Duration</li>
+                                    <li><i class="fas fa-check"></i> 1-on-1 Mentoring</li>
+                                </ul>
+                                <button class="enroll-btn">Enroll Now</button>
+                            </div>
+
+                            <div class="course-card">
+                                <div class="course-header">
+                                    <h5>Mixing & Mastering</h5>
+                                    <span class="course-price">$500</span>
+                                </div>
+                                <ul class="course-features">
+                                    <li><i class="fas fa-check"></i> Professional Mix Techniques</li>
+                                    <li><i class="fas fa-check"></i> Mastering for Streaming</li>
+                                    <li><i class="fas fa-check"></i> Industry Standards</li>
+                                    <li><i class="fas fa-check"></i> 10 Weeks Course Duration</li>
+                                    <li><i class="fas fa-check"></i> Real Project Experience</li>
+                                </ul>
+                                <button class="enroll-btn">Enroll Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <h4>Online Community</h4>
+                        <p>Connect with fellow producers and share your music</p>
+                    </div>
+                    <div class="service-item">
+                        <h4>Resources & Tools</h4>
+                        <p>Access high-quality samples, presets, and tutorials</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team" class="content">
+        <h2 class="section-title">Our Team</h2>
+        <div class="team-container">
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="KONDWANI.png" alt="KONDWANI">
+                        <div class="member-overlay">
+                            <i class="fas fa-music" style="color: #1DB954"></i>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h4>KONDWANI KAPICHI</h4>
+                        <span class="position">Lead Producer</span>
+                        <p>10+ years experience in music production, worked with top artists in the industry</p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="ANTHONY.png" alt="ANTHONY">
+                        <div class="member-overlay">
+                            <i class="fas fa-sliders-h" style="color: #FF5500"></i>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h4>ANTHONY LUNGU</h4>
+                        <span class="position">Senior Mixing Engineer</span>
+                        <p>Grammy-nominated engineer with expertise in modern mixing techniques</p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="team3.jpg" alt="Sound Designer">
+                        <div class="member-overlay">
+                            <i class="fas fa-wave-square" style="color: #00D8FF"></i>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h4>Alex Rodriguez</h4>
+                        <span class="position">Sound Designer</span>
+                        <p>Specialist in synthesizer programming and sound design for major labels</p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="team4.jpg" alt="Music Theory">
+                        <div class="member-overlay">
+                            <i class="fas fa-guitar" style="color: #FF0000"></i>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h4>Dr. Emily Parker</h4>
+                        <span class="position">Music Theory Instructor</span>
+                        <p>PhD in Music Theory, 8 years teaching experience at prestigious institutions</p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="team5.jpg" alt="Mastering">
+                        <div class="member-overlay">
+                            <i class="fas fa-compact-disc" style="color: #FF9900"></i>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h4>Michael Brown</h4>
+                        <span class="position">Mastering Engineer</span>
+                        <p>20+ years mastering experience, specialized in electronic and hip-hop genres</p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="team6.jpg" alt="Beat Making">
+                        <div class="member-overlay">
+                            <i class="fas fa-drum" style="color: #8E44AD"></i>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h4>DJ Rhythm</h4>
+                        <span class="position">Beat Production Specialist</span>
+                        <p>Platinum-certified producer with expertise in trap and hip-hop production</p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="team7.jpg" alt="Vocal Production">
+                        <div class="member-overlay">
+                            <i class="fas fa-microphone" style="color: #E91E63"></i>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h4>Lisa Anderson</h4>
+                        <span class="position">Vocal Production Specialist</span>
+                        <p>Expertise in vocal recording, tuning, and processing for major artists</p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="team8.jpg" alt="Recording">
+                        <div class="member-overlay">
+                            <i class="fas fa-record-vinyl" style="color: #2ECC71"></i>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h4>David Thompson</h4>
+                        <span class="position">Recording Engineer</span>
+                        <p>Specialist in live recording and studio session management</p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="team9.jpg" alt="Music Business">
+                        <div class="member-overlay">
+                            <i class="fas fa-briefcase" style="color: #3498DB"></i>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h4>Rachel Martinez</h4>
+                        <span class="position">Music Business Advisor</span>
+                        <p>Former label executive with expertise in music licensing and publishing</p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="team10.jpg" alt="Sample Curator">
+                        <div class="member-overlay">
+                            <i class="fas fa-layer-group" style="color: #F1C40F"></i>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h4>Marcus Lee</h4>
+                        <span class="position">Sample Library Curator</span>
+                        <p>Expert in sample curation and sound library development</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="content">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-container">
+            <form id="contactForm" class="contact-form">
+                <div class="form-group">
+                    <label for="contactName">Name</label>
+                    <input type="text" id="contactName" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactEmail">Email</label>
+                    <input type="email" id="contactEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactSubject">Subject</label>
+                    <input type="text" id="contactSubject" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactMessage">Message</label>
+                    <textarea id="contactMessage" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+                <div class="form-status"></div>
+            </form>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="https://spotify.com/user/your-profile" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <i class="fab fa-spotify"></i>
+                        <span>Spotify</span>
+                    </a>
+                    <a href="https://soundcloud.com/your-profile" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <i class="fab fa-soundcloud"></i>
+                        <span>SoundCloud</span>
+                    </a>
+                    <a href="https://instagram.com/your-profile" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                        <span>Instagram</span>
+                    </a>
+                    <a href="https://youtube.com/your-channel" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <i class="fab fa-youtube"></i>
+                        <span>YouTube</span>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#music">Software</a></li>
+                    <li><a href="#beats">Beats</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Beats Web. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="https://kit.fontawesome.com/your-kit-code.js" crossorigin="anonymous"></script>
+    <script src="config.js" type="module"></script>
+    <script src="auth.js" type="module"></script>
+</body>
+</html>
